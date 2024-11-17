@@ -40,3 +40,16 @@ if __name__ == "__main__":
     while not s.is_empty():
         print(s.peek())
         s.pop()
+
+# Dry Run:
+# Initial Stack: []
+# After s.push(1): [1]
+# After s.push(2): [2, 1]
+# After s.push(3): [3, 2, 1]
+# After s.push(4): [4, 3, 2, 1]
+# Peek and Pop sequence:
+# Peek: 4, Pop: [3, 2, 1]
+# Peek: 3, Pop: [2, 1]
+# Peek: 2, Pop: [1]
+# Peek: 1, Pop: []
+# Stack is now empty.
