@@ -320,21 +320,76 @@ def diff_max_min(L):
 ## Example 13: WPP to Find the Factorial of a Given Number
 
 ```python
-def factorial(n):
+# Ex13: WPP to find factorial of the given number
+
+# Logic 1: Using While Loop
+def factorial_logic1(n):
+    f = 1
+    i = 1
+    while i <= n:
+        f = f * i
+        i = i + 1
+    return f
+
+# Logic 2: Using Recursion
+def factorial_logic2(n):
     if n == 0:
         return 1
-    return n * factorial(n - 1)
+    else:
+        return n * factorial_logic2(n - 1)
 
-n = int(input("Enter a number: "))
-print("Factorial of", n, "is", factorial(n))
+# Logic 3: Using Predefined Functions
+import math
+def factorial_logic3(n):
+    return math.factorial(n)
+
+# Main Code
+for i in range(10 + 1):
+    print(i, factorial_logic1(i), factorial_logic2(i), factorial_logic3(i), sep='\t\t')
 ```
 
-### Example Output:
 
-```bash
-Enter a number: 5
-Factorial of 5 is 120
+### Ex14: WPP to check whether the given number is prime or not
+```py
 
-Enter a number: 3
-Factorial of 3 is 6
-```
+# Optimized Logic 1: By Using Loops
+def isprime1(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):  # Check up to the square root of n
+        if n % i == 0:
+            return False
+    return True
+
+# Dry Run for isprime1
+# Example: n = 7
+# 1. Check if 7 <= 1: False
+# 2. Loop i from 2 to 2 (int(7**0.5) + 1)
+#    - i = 2: 7 % 2 != 0 (continue)
+# 3. Loop ends, return True (7 is prime)
+
+# Optimized Logic 2: By Using Recursion
+def isprime2(n, i=None):
+    if n <= 1:
+        return False
+    if i is None:
+        i = int(n**0.5)  # Start checking from the square root of n
+    if i < 2:
+        return True
+    if n % i == 0:
+        return False
+    return isprime2(n, i - 1)
+
+# Dry Run for isprime2
+# Example: n = 7
+# 1. Check if 7 <= 1: False
+# 2. i is None, set i = 2 (int(7**0.5))
+# 3. Check if i < 2: False
+# 4. Check if 7 % 2 != 0: True, call isprime2(7, 1)
+# 5. Check if 7 <= 1: False
+# 6. Check if i < 2: True, return True (7 is prime)
+
+# Main Code
+for i in range(2, 11):
+    print(f"i={i}\t{isprime1(i)}\t{isprime2(i)}")
+``
